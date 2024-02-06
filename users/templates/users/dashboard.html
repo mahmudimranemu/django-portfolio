@@ -1,0 +1,5 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+Hello, {{ user.username|default:'Guest' }}!
+{% endblock page_content %}
