@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+<article class="blog-post">
+    <img src=" {{post.featured_image.url}} " width="100%" alt="">
+    <h2 class="display-5 link-body-emphasis mb-1"> {{post.title}} </h2>
+    <p class="blog-post-meta"> Posted by <a href="#">Mark</a> {{post.created_at | timesince}} ago </p>
+        {{post.body}}
+  </article>
+{% endblock page_content %}

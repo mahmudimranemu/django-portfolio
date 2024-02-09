@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+
+{% block page_content %}
+<div class="row mb-2">
+    {% for post in posts %}
+    <div class="col-md-6">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+              <div class="col-auto d-none d-lg-block">
+                <a href=" {% url 'post_details' post.pk %} ">
+                  <img src=" {{post.featured_image.url}} " width="100%" alt="">
+                </a>
+              </div>
+              <div class="categories mt-2 mb-2">
+                {% for category in post.categories.all %}
+                <a href=" {% url 'category_posts' category.name%} "><span class="badge text-bg-primary"> {{category.name}} </span></a> 
+                {% endfor %}
+              </div>
+            
+              <a href=" {% url 'post_details' post.pk %} ">
+                <h3 class="mb-0"> {{post.title}} </h3>
+              </a>
+            <div class="mb-1 text-body-secondary">{{post.created_at}}</div>
+            <p class="card-text mb-auto"> {{post.body | slice:200}} </p>
+            <a href=" {% url 'post_details' post.pk%} " class="icon-link gap-1 icon-link-hover">
+              Continue reading
+              <svg class="bi"><use xlink:href="#chevron-right"></use></svg>
+            </a>
+          </div>
+          
+        </div>
+      </div>
+    {% endfor %}
+</div>
+{% endblock page_content %}

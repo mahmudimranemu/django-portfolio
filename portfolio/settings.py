@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users',
-    'social_django',
+    'blog',
+
 ]
 
 MIDDLEWARE = [
@@ -72,8 +73,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                "social_django.context_processors.backends",
-                "social_django.context_processors.login_redirect",
             ],
         },
     },
@@ -139,11 +138,3 @@ LOGIN_REDIRECT_URL = "dashboard"
 LOGOUT_REDIRECT_URL = "dashboard"
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-
-AUTHENTICATION_BACKENDS = [
-    "django.contrib.auth.backends.ModelBackend",
-    "social_core.backends.github.GithubOAuth2",
-]
-
-SOCIAL_AUTH_GITHUB_KEY = os.environ.get("4cf8b60f84d01aab8bc0")
-SOCIAL_AUTH_GITHUB_SECRET = os.environ.get("176845c7f3ec7a1d3747fb7bd4f669dbaa5c310c")
